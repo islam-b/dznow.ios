@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (5.6.2)
+  - Kingfisher (7.3.1)
+  - SwiftMoment (0.7)
+
+DEPENDENCIES:
+  - Alamofire
+  - Kingfisher
+  - SwiftMoment
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Kingfisher
+    - SwiftMoment
+
+SPEC CHECKSUMS:
+  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  Kingfisher: f411ab4902e733fc0c40522920fb5a236d7a7334
+  SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
+
+PODFILE CHECKSUM: 0f9c12d7e38ff0dba5fc7c6ec188d3909e88dfd4
+
+COCOAPODS: 1.11.3
