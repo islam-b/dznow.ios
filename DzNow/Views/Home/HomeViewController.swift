@@ -10,6 +10,7 @@ import SwiftMoment
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var searchInput: UISearchBar!
     @IBOutlet weak var newCollectionView: UICollectionView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
@@ -20,6 +21,12 @@ class HomeViewController: UIViewController {
     ]
     
     var selectedCategory:Category! {
+        didSet {
+            filterNews()
+        }
+    }
+    
+    var search:String = "" {
         didSet {
             filterNews()
         }
@@ -44,7 +51,7 @@ class HomeViewController: UIViewController {
         print(selectedCategory)
         print(filtered)*/
         
-        newsDao.getList { news, error in
+        newsDao.getList(filter: search) { news, error in
             if (error != nil) {
                 print(error?.message)
             } else {
@@ -75,7 +82,7 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if (collectionView == categoriesCollectionView) {
@@ -115,6 +122,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else {
             selectedCategory = categories[indexPath.row]
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        search = searchText
     }
     
     

@@ -16,6 +16,10 @@
 		A6369802289D81F000357627 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6369801289D81F000357627 /* HomeViewController.swift */; };
 		A63A33C128AC2C2700CA5412 /* NewsRemoteDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63A33C028AC2C2700CA5412 /* NewsRemoteDAO.swift */; };
 		A63A33C328AC44BF00CA5412 /* NewsDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63A33C228AC44BF00CA5412 /* NewsDAO.swift */; };
+		A63EB8DC28AD8FE00006A7E2 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63EB8DB28AD8FE00006A7E2 /* AuthViewController.swift */; };
+		A63EB8DE28AD9A2B0006A7E2 /* AuthDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63EB8DD28AD9A2B0006A7E2 /* AuthDAO.swift */; };
+		A63EB8E028AD9ABD0006A7E2 /* AuthRemoteDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63EB8DF28AD9ABD0006A7E2 /* AuthRemoteDAO.swift */; };
+		A6599E1728AEEA0F00807AAA /* KeychainUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6599E1628AEEA0F00807AAA /* KeychainUtils.swift */; };
 		A66ED6C028A1278000989A06 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66ED6BE28A1278000989A06 /* NewsCollectionViewCell.swift */; };
 		A66ED6C128A1278000989A06 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66ED6BF28A1278000989A06 /* NewsCollectionViewCell.xib */; };
 		A68356BB289B09BA008F0B05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68356BA289B09BA008F0B05 /* AppDelegate.swift */; };
@@ -40,6 +44,10 @@
 		A6369801289D81F000357627 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A63A33C028AC2C2700CA5412 /* NewsRemoteDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRemoteDAO.swift; sourceTree = "<group>"; };
 		A63A33C228AC44BF00CA5412 /* NewsDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDAO.swift; sourceTree = "<group>"; };
+		A63EB8DB28AD8FE00006A7E2 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		A63EB8DD28AD9A2B0006A7E2 /* AuthDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDAO.swift; sourceTree = "<group>"; };
+		A63EB8DF28AD9ABD0006A7E2 /* AuthRemoteDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRemoteDAO.swift; sourceTree = "<group>"; };
+		A6599E1628AEEA0F00807AAA /* KeychainUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUtils.swift; sourceTree = "<group>"; };
 		A66ED6BE28A1278000989A06 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A66ED6BF28A1278000989A06 /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
 		A68356B7289B09BA008F0B05 /* DzNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DzNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +85,7 @@
 		A61B71E7289D231600E438DB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A63EB8DA28AD8FCE0006A7E2 /* Auth */,
 				A626B93928A27FF400E16DE4 /* NewsDetails */,
 				A6369800289D81D600357627 /* Home */,
 				A61B71E8289D232900E438DB /* Onboarding */,
@@ -117,8 +126,25 @@
 			isa = PBXGroup;
 			children = (
 				A63A33C028AC2C2700CA5412 /* NewsRemoteDAO.swift */,
+				A63EB8DF28AD9ABD0006A7E2 /* AuthRemoteDAO.swift */,
 			);
 			path = DAO;
+			sourceTree = "<group>";
+		};
+		A63EB8DA28AD8FCE0006A7E2 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A63EB8DB28AD8FE00006A7E2 /* AuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A6599E1528AEE9AE00807AAA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A6599E1628AEEA0F00807AAA /* KeychainUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		A68356AE289B09BA008F0B05 = {
@@ -142,6 +168,7 @@
 		A68356B9289B09BA008F0B05 /* DzNow */ = {
 			isa = PBXGroup;
 			children = (
+				A6599E1528AEE9AE00807AAA /* Utils */,
 				A63A33BF28AC2BFE00CA5412 /* DAO */,
 				A6BAB237289F044500BB14DB /* Extensions */,
 				A61B71E7289D231600E438DB /* Views */,
@@ -162,6 +189,7 @@
 				A68356CE289B2710008F0B05 /* News.swift */,
 				A61B71EB289D284600E438DB /* OnboardingSlide.swift */,
 				A63A33C228AC44BF00CA5412 /* NewsDAO.swift */,
+				A63EB8DD28AD9A2B0006A7E2 /* AuthDAO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,16 +328,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A63EB8E028AD9ABD0006A7E2 /* AuthRemoteDAO.swift in Sources */,
 				A6BAB235289EFAA700BB14DB /* CategoryCollectionViewCell.swift in Sources */,
 				A63A33C328AC44BF00CA5412 /* NewsDAO.swift in Sources */,
 				A68356BB289B09BA008F0B05 /* AppDelegate.swift in Sources */,
 				A61B71EA289D236C00E438DB /* OnboardingViewController.swift in Sources */,
+				A6599E1728AEEA0F00807AAA /* KeychainUtils.swift in Sources */,
 				A6369802289D81F000357627 /* HomeViewController.swift in Sources */,
 				A68356CF289B2710008F0B05 /* News.swift in Sources */,
 				A61B71EC289D284600E438DB /* OnboardingSlide.swift in Sources */,
+				A63EB8DE28AD9A2B0006A7E2 /* AuthDAO.swift in Sources */,
 				A61B71EE289D29E900E438DB /* OnboardingCollectionViewCell.swift in Sources */,
 				A626B93B28A2801500E16DE4 /* NewsDetailsViewController.swift in Sources */,
 				A66ED6C028A1278000989A06 /* NewsCollectionViewCell.swift in Sources */,
+				A63EB8DC28AD8FE00006A7E2 /* AuthViewController.swift in Sources */,
 				A626B93D28A281E100E16DE4 /* UIViewControllerExtension.swift in Sources */,
 				A63A33C128AC2C2700CA5412 /* NewsRemoteDAO.swift in Sources */,
 				A68356BD289B09BA008F0B05 /* SceneDelegate.swift in Sources */,

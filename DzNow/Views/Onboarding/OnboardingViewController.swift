@@ -24,15 +24,16 @@ class OnboardingViewController: UIViewController {
     }
     
     var slides: [OnboardingSlide] =  [
-        OnboardingSlide(title: "Delicious Dishes", description: "Experience a variety of amazing dishes from different cultures around the world.", image: #imageLiteral(resourceName: "sgs3")),
-        OnboardingSlide(title: "World-Class Chefs", description: "Our dishes are prepared by only the best.", image: #imageLiteral(resourceName: "sgs3")),
-        OnboardingSlide(title: "Instant World-Wide Delivery", description: "Your orders will be delivered instantly irrespective of your location around the world.", image: #imageLiteral(resourceName: "sgs3"))
+        OnboardingSlide(title: "Delicious Dishes", description: "Experience a variety of amazing dishes from different cultures around the world.", image: #imageLiteral(resourceName: "NewsPlaceholder")),
+        OnboardingSlide(title: "World-Class Chefs", description: "Our dishes are prepared by only the best.", image: #imageLiteral(resourceName: "NewsPlaceholder")),
+        OnboardingSlide(title: "Instant World-Wide Delivery", description: "Your orders will be delivered instantly irrespective of your location around the world.", image: #imageLiteral(resourceName: "NewsPlaceholder"))
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         pageControl.numberOfPages = slides.count
+        
         
         // Do any additional setup after loading the view.
     }
@@ -43,11 +44,38 @@ class OnboardingViewController: UIViewController {
             let indexPath = IndexPath(item: currentPage, section: 0)
             collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
         } else {
-            let controller = storyboard?.instantiateViewController(withIdentifier: "homeNC") as! UINavigationController
-            controller.modalPresentationStyle = .fullScreen
-            controller.modalTransitionStyle = .crossDissolve
-            present(controller, animated: true)
+            if (isAuthenticated()) {
+                goToHomeViewController()
+            } else {
+                goToAuthViewController()
+            }
+            
         }
+    }
+    
+    
+    
+    private func isAuthenticated() -> Bool {
+        let keychain = KeychainUtils.instance()
+        let access_token = keychain.retreive(key: "access_token")
+        if (access_token != nil) {
+            //TODO validate expiration
+            return true
+        }
+        return false
+    }
+    
+    private func goToHomeViewController() {
+        let homeViewController = storyboard?.instantiateViewController(withIdentifier: "homeVC")
+        self.view.window?.rootViewController = homeViewController
+        self.view.window?.makeKeyAndVisible()
+    }
+    
+    private func goToAuthViewController() {
+        let viewController = storyboard?.instantiateViewController(withIdentifier: "authVC") as! AuthViewController
+        viewController.modalPresentationStyle = .fullScreen
+        viewController.modalTransitionStyle = .crossDissolve
+        present(viewController, animated: true)
     }
     
     /*

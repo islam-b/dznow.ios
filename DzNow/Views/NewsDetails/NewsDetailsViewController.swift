@@ -23,15 +23,40 @@ class NewsDetailsViewController: UIViewController {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var loading: UIActivityIndicatorView!
+    
+    private var newsDao: NewsDAO = NewsRemoteDAO()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let imageUrl = URL(string: news!.imageUrl)
-        cover.kf.setImage(with: imageUrl)
+        
+        loadContent()
+
+        if (news.imageUrl != nil) {
+            let imageUrl = URL(string: news.imageUrl!)
+            cover.kf.setImage(with: imageUrl)
+        } else {
+            cover.image = UIImage(named: "NewsPlaceholder")
+        }
         titleLabel.text = news?.title
-        descriptionLabel.text = news?.contentSnippet
 
         dateLabel.text = moment(news!.isoDate)?.format("dd/MM/yyyy")
+        
+    }
+    
+    
+    func loadContent() {
+        loading.startAnimating()
+        newsDao.getContent(id: news.id) { content, error in
+            self.loading.stopAnimating()
+            if (error != nil) {
+                print(error?.message)
+            } else {
+                self.descriptionLabel.text = content!
+            }
+        }
     }
     
     

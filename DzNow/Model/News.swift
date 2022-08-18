@@ -20,7 +20,7 @@ struct News : Decodable {
     var isoDate: String
     var link: String
     var pubDate:String
-    var imageUrl: String
+    var imageUrl: String?
 }
 
  

@@ -21,8 +21,12 @@ class NewsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var date: UILabel!
     
     func setup(_ news:News) {
-        let imageUrl = URL(string: news.imageUrl)
-        image.kf.setImage(with: imageUrl)
+        if (news.imageUrl != nil) {
+            let imageUrl = URL(string: news.imageUrl!)
+            image.kf.setImage(with: imageUrl)
+        } else {
+            image.image = UIImage(named: "NewsPlaceholder")
+        }
         title.text = news.title
         date.text = moment(news.isoDate)?.format("dd/MM/yyyy")
     }

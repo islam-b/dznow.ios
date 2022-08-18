@@ -17,10 +17,14 @@ struct Error {
     var message: String
 }
 
+typealias OnComplete<T> = (T?, Error?) -> Void
+
+
 protocol NewsDAO {
     
-    typealias OnComplete = ([News]?, Error?) -> Void
     
-    func getList(onComplete:  @escaping OnComplete)
+    func getList(filter: String?,onComplete:  @escaping OnComplete<[News]>)
+    
+    func getContent(id: String, onComplete: @escaping OnComplete<String>)
     
 }
